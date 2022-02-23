@@ -1,0 +1,15 @@
+# Add any directories, files, or patterns you don't want to be tracked by version control
+__pycache__/
+.idea/
+/logs/
+app/config.cfg
+/venv/
+/.venv/
+/env/
+data/logs
+/.coverage
+/tests/cov_html/
+.env
+.python-version
+*.DS_Store*
+app/data/logs/*

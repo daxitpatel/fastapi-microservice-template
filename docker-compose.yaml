@@ -1,0 +1,25 @@
+version: "3.11"
+services:
+  fastapi-microservice:
+    container_name: "fastapi-microservice"
+    build:
+      context: .
+      shm_size: '4gb'
+    image: fastapi-microservice
+    platform: linux/amd64
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "5000:5000"
+    tty: true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /tmp/statics:/web
+      - ./:/fastapi-microservice
+    networks:
+      - fastapi-microservice_network
+
+networks:
+  fastapi-microservice_network:
+    external: true

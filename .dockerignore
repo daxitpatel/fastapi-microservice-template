@@ -1,0 +1,11 @@
+
+# ignore
+.git
+.cache
+.venv
+.idea
+
+data
+infra
+k8s
+SnapShots

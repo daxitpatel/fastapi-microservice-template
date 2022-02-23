@@ -1,0 +1,21 @@
+CREATE TABLE `test_user_skill` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint unsigned NOT NULL,
+  `skill_id` bigint unsigned NOT NULL,
+  `type` enum('primary','secondary') NOT NULL,
+  `created_at` datetime NOT NULL,
+  `created_by` bigint unsigned NOT NULL,
+  `modified_at` datetime NOT NULL,
+  `modified_by` bigint unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_user_skill_user_id_skill_id` (`user_id`,`skill_id`),
+  KEY `fk_user_skill_user_id` (`user_id`),
+  KEY `fk_user_skill_skill_id` (`skill_id`),
+  KEY `fk_user_skill_created_by` (`created_by`),
+  KEY `fk_user_skill_modified_by` (`modified_by`),
+  CONSTRAINT `fk_user_skill_created_by` FOREIGN KEY (`created_by`) REFERENCES `user` (`id`),
+  CONSTRAINT `fk_user_skill_modified_by` FOREIGN KEY (`modified_by`) REFERENCES `user` (`id`),
+  CONSTRAINT `fk_user_skill_skill_id` FOREIGN KEY (`skill_id`) REFERENCES `skill` (`id`),
+  CONSTRAINT `fk_user_skill_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4396 DEFAULT CHARSET=utf8mb3
